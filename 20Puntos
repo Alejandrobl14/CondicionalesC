@@ -1,0 +1,381 @@
+using System;
+using System.Linq;
+
+namespace TallerArreglos
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Menú principal
+            Console.WriteLine("===== TALLER DE ARREGLOS Y BUCLES =====");
+            Console.WriteLine("1. Registro de Temperaturas");
+            Console.WriteLine("2. Secuencia Fibonacci");
+            Console.WriteLine("3. Inicializacion Alternativa");
+            Console.WriteLine("4. Promedio de Calificaciones");
+            Console.WriteLine("5. Buscador de Valores");
+            Console.WriteLine("6. Ranking de Ventas");
+            Console.WriteLine("7. Estadisticas Rapidas");
+            Console.WriteLine("8. Filtro de Inventario");
+            Console.WriteLine("9. Inversion de Arreglo");
+            Console.WriteLine("10. Verificacion de Aprobados");
+            Console.WriteLine("11. Tablas de Multiplicar");
+            Console.WriteLine("12. Dibujo de Patrones");
+            Console.WriteLine("13. Comparacion de Arreglos");
+            Console.WriteLine("14. Identificacion de Duplicados");
+            Console.WriteLine("15. Matriz de Identidad");
+            Console.WriteLine("16. Registro de Asistencia");
+            Console.WriteLine("17. Tabla de Precios");
+            Console.WriteLine("18. Suma de Filas");
+            Console.WriteLine("19. Mapa de Coordenadas");
+            Console.WriteLine("20. Analisis de Ventas Mensuales");
+
+            Console.Write("\nSeleccione una opción: ");
+            int opcion = int.Parse(Console.ReadLine());
+
+            switch (opcion)
+            {
+                case 1:
+                    // Arreglo con temperaturas de la semana
+                    double[] temperaturas = { 20, 22, 24, 23, 21, 19, 18 };
+
+                    // Cambia el valor del tercer día
+                    temperaturas[2] = 25;
+
+                    // Muestra el nuevo valor
+                    Console.WriteLine("Temperatura actualizada: " + temperaturas[2] + "°C");
+                    break;
+
+                case 2:
+                    // Crea arreglo de Fibonacci
+                    int[] fibonacci = new int[10];
+
+                    // Primeros valores
+                    fibonacci[0] = 0;
+                    fibonacci[1] = 1;
+
+                    // Genera la secuencia
+                    for (int i = 2; i < fibonacci.Length; i++)
+                    {
+                        fibonacci[i] = fibonacci[i - 1] + fibonacci[i - 2];
+                    }
+
+                    // Muestra resultados
+                    foreach (int numero in fibonacci)
+                    {
+                        Console.Write(numero + " ");
+                    }
+                    break;
+
+                case 3:
+                    // Declaración abreviada
+                    string[] ciudades = { "Bogotá", "Medellín", "Cali", "Barranquilla" };
+
+                    // Muestra cantidad de elementos
+                    Console.WriteLine("Cantidad de ciudades: " + ciudades.Length);
+                    break;
+
+                case 4:
+                    // Arreglo de notas
+                    double[] notas = { 4.5, 3.8, 4.0, 5.0 };
+
+                    double suma = 0;
+
+                    // Suma todas las notas
+                    foreach (double nota in notas)
+                    {
+                        suma += nota;
+                    }
+
+                    // Calcula promedio
+                    double promedio = suma / notas.Length;
+
+                    Console.WriteLine("Promedio: " + promedio);
+                    break;
+
+                case 5:
+                    // Arreglo de números
+                    int[] numeros = { 10, 20, 30, 40, 50 };
+
+                    Console.Write("Ingrese número a buscar: ");
+                    int buscar = int.Parse(Console.ReadLine());
+
+                    bool encontrado = false;
+
+                    // Recorre el arreglo
+                    for (int i = 0; i < numeros.Length; i++)
+                    {
+                        if (numeros[i] == buscar)
+                        {
+                            Console.WriteLine("Encontrado en índice: " + i);
+                            encontrado = true;
+                            break;
+                        }
+                    }
+
+                    if (!encontrado)
+                    {
+                        Console.WriteLine("Número no encontrado");
+                    }
+                    break;
+
+                case 6:
+                    // Arreglo de ventas
+                    int[] ventas = { 450, 120, 800, 300, 650 };
+
+                    // Ordena de menor a mayor
+                    Array.Sort(ventas);
+
+                    Console.WriteLine("Ventas ordenadas:");
+
+                    foreach (int venta in ventas)
+                    {
+                        Console.WriteLine(venta);
+                    }
+                    break;
+
+                case 7:
+                    // Arreglo de edades
+                    int[] edades = { 18, 20, 25, 30, 15 };
+
+                    Console.WriteLine("Edad máxima: " + edades.Max());
+                    Console.WriteLine("Edad mínima: " + edades.Min());
+                    Console.WriteLine("Suma total: " + edades.Sum());
+                    break;
+
+                case 8:
+                    // Arreglo de precios
+                    double[] precios = { 25, 60, 80, 40, 100 };
+
+                    // Filtra precios mayores a 50
+                    var mayores = precios.Where(p => p > 50);
+
+                    Console.WriteLine("Precios mayores a 50:");
+
+                    foreach (double precio in mayores)
+                    {
+                        Console.WriteLine(precio);
+                    }
+                    break;
+
+                case 9:
+                    // Arreglo original
+                    char[] letras = { 'A', 'B', 'C', 'D', 'E' };
+
+                    // Nuevo arreglo invertido
+                    char[] invertido = new char[letras.Length];
+
+                    for (int i = 0; i < letras.Length; i++)
+                    {
+                        invertido[i] = letras[letras.Length - 1 - i];
+                    }
+
+                    Console.WriteLine("Arreglo invertido:");
+
+                    foreach (char letra in invertido)
+                    {
+                        Console.Write(letra + " ");
+                    }
+                    break;
+
+                case 10:
+                    // Arreglo de notas
+                    double[] calificaciones = { 4.0, 2.5, 3.2, 5.0, 2.8 };
+
+                    int aprobados = 0;
+
+                    foreach (double nota in calificaciones)
+                    {
+                        if (nota >= 3.0)
+                        {
+                            aprobados++;
+                        }
+                    }
+
+                    double porcentaje = (double)aprobados * 100 / calificaciones.Length;
+
+                    Console.WriteLine("Aprobados: " + aprobados);
+                    Console.WriteLine("Porcentaje: " + porcentaje + "%");
+                    break;
+
+                case 11:
+                    // Genera tablas del 1 al 5
+                    for (int i = 1; i <= 5; i++)
+                    {
+                        Console.WriteLine("\nTabla del " + i);
+
+                        for (int j = 1; j <= 10; j++)
+                        {
+                            Console.WriteLine(i + " x " + j + " = " + (i * j));
+                        }
+                    }
+                    break;
+
+                case 12:
+                    // Altura del triángulo
+                    int altura = 5;
+
+                    for (int i = 1; i <= altura; i++)
+                    {
+                        for (int j = 1; j <= i; j++)
+                        {
+                            Console.Write("*");
+                        }
+
+                        Console.WriteLine();
+                    }
+                    break;
+
+                case 13:
+                    // Arreglos a comparar
+                    int[] arreglo1 = { 1, 2, 3, 4, 5 };
+                    int[] arreglo2 = { 3, 4, 5, 6, 7 };
+
+                    Console.WriteLine("Elementos comunes:");
+
+                    for (int i = 0; i < arreglo1.Length; i++)
+                    {
+                        for (int j = 0; j < arreglo2.Length; j++)
+                        {
+                            if (arreglo1[i] == arreglo2[j])
+                            {
+                                Console.WriteLine(arreglo1[i]);
+                            }
+                        }
+                    }
+                    break;
+
+                case 14:
+                    // Arreglo con posibles duplicados
+                    int[] datos = { 1, 2, 3, 2, 5 };
+
+                    for (int i = 0; i < datos.Length; i++)
+                    {
+                        for (int j = i + 1; j < datos.Length; j++)
+                        {
+                            if (datos[i] == datos[j])
+                            {
+                                Console.WriteLine("Duplicado: " + datos[i]);
+                            }
+                        }
+                    }
+                    break;
+
+                case 15:
+                    // Matriz identidad 3x3
+                    for (int i = 0; i < 3; i++)
+                    {
+                        for (int j = 0; j < 3; j++)
+                        {
+                            if (i == j)
+                            {
+                                Console.Write("1 ");
+                            }
+                            else
+                            {
+                                Console.Write("0 ");
+                            }
+                        }
+
+                        Console.WriteLine();
+                    }
+                    break;
+
+                case 16:
+                    // Matriz de asistencia
+                    bool[,] asistencia = new bool[3, 5];
+
+                    // Marca asistencia
+                    asistencia[1, 4] = true;
+
+                    Console.WriteLine("Asistencia registrada: " + asistencia[1, 4]);
+                    break;
+
+                case 17:
+                    // Matriz de precios
+                    double[,] preciosTiendas =
+                    {
+                        {100,120},
+                        {200,220},
+                        {300,320}
+                    };
+
+                    Console.WriteLine("Segundo producto, primera tienda:");
+                    Console.WriteLine(preciosTiendas[1, 0]);
+                    break;
+
+                case 18:
+                    // Matriz 4x4
+                    int[,] matriz =
+                    {
+                        {1,2,3,4},
+                        {5,6,7,8},
+                        {9,10,11,12},
+                        {13,14,15,16}
+                    };
+
+                    for (int i = 0; i < 4; i++)
+                    {
+                        int sumaFila = 0;
+
+                        for (int j = 0; j < 4; j++)
+                        {
+                            sumaFila += matriz[i, j];
+                        }
+
+                        Console.WriteLine("Suma fila " + (i + 1) + ": " + sumaFila);
+                    }
+                    break;
+
+                case 19:
+                    // Mapa 2x2
+                    string[,] mapa =
+                    {
+                        {"Bosque","Rio"},
+                        {"Montaña","Ciudad"}
+                    };
+
+                    Console.Write("Fila: ");
+                    int fila = int.Parse(Console.ReadLine());
+
+                    Console.Write("Columna: ");
+                    int columna = int.Parse(Console.ReadLine());
+
+                    mapa[fila, columna] = "Explorado";
+
+                    Console.WriteLine("Posición actualizada correctamente.");
+                    break;
+
+                case 20:
+                    // Matriz de ventas
+                    int[,] ventasMeses =
+                    {
+                        {100,200,300},
+                        {400,500,600},
+                        {700,800,900}
+                    };
+
+                    int totalMes2 = 0;
+
+                    // Suma ventas del segundo mes
+                    for (int j = 0; j < ventasMeses.GetLength(1); j++)
+                    {
+                        totalMes2 += ventasMeses[1, j];
+                    }
+
+                    // Busca el valor más alto usando Linq
+                    int mayorVenta = ventasMeses.Cast<int>().Max();
+
+                    Console.WriteLine("Total ventas mes 2: " + totalMes2);
+                    Console.WriteLine("Mayor venta registrada: " + mayorVenta);
+                    break;
+
+                default:
+                    Console.WriteLine("Opción inválida.");
+                    break;
+            }
+
+            Console.ReadKey();
+        }
+    }
+}
